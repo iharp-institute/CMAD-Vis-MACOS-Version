@@ -1,0 +1,29 @@
+<!--
+  Drop this near your existing download button in result.html, and add
+  data-filename="{{ image_file }}" to that button (or replace it with
+  this one). This calls the native Save-As dialog when running inside
+  the packaged desktop app, and falls back to the original /download/
+  link when opened in a normal browser (e.g. during development).
+-->
+
+<button id="download-btn" data-filename="{{ image_file }}">Download</button>
+
+<script>
+document.getElementById('download-btn').addEventListener('click', function () {
+    const filename = this.getAttribute('data-filename');
+
+    if (window.pywebview && window.pywebview.api) {
+        window.pywebview.api.save_file(filename).then(function (result) {
+            if (result && result.status === 'error') {
+                alert('Could not save file: ' + result.message);
+            }
+            // 'ok' and 'cancelled' need no further action
+        });
+    } else {
+        // Not running inside the packaged app (e.g. plain dev server) —
+        // use the original Flask download route, which works fine in a
+        // real browser.
+        window.location.href = '/download/' + filename;
+    }
+});
+</script>

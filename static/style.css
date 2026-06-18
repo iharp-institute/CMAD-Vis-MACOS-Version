@@ -1,0 +1,104 @@
+body {
+    background: #f4f6f9;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+/* .example-box {
+    background-color: #e6f7e6;   
+    border-left: 6px solid #2e8b57;  
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 6px;} 
+*/
+
+.example-box {
+    background-color: #e6f7e6;   /* light green */
+    border-left: 6px solid #2e8b57;  /* darker green bar */
+    padding: 25px;              /* increased padding */
+    margin-top: 25px;
+    border-radius: 8px;
+    font-size: 18px;            /* bigger text */
+    line-height: 1.6;           /* better readability */
+    width: 90%;                 /* wider box */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instruction-text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #004085;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+input[type="file"] {
+    margin: 10px;
+    padding: 8px;
+}
+
+img {
+    border: 3px solid #f0f0f0;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo-header .header-titles {
+    flex: 1;
+    text-align: center;
+}
+
+.logo-header h1 {
+    margin: 0 0 6px 0;
+}
+
+.logo-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border: none;
+    border-radius: 0;
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+.logo-nsf {
+    background: transparent;
+}

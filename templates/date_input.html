@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMAD – Antarctic Anomalous Melting Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<div class="container">
+
+    <div class="logo-header">
+        <img src="/static/iharp-logo.jpg" alt="iHARP Logo" class="logo-img">
+        <div class="header-titles">
+            <h1>Convolution Matrix Anomaly Detection (CMAD)</h1>
+            <h2>Antarctic Anomalous Melting Detection Tool</h2>
+        </div>
+        <img src="/static/nsf-logo.png" alt="NSF Logo" class="logo-img logo-nsf">
+    </div>
+
+   <p class="instruction-text">
+    Compare between any two dates. The target day should not be a future date, 
+    and the baseline day should be earlier than the target day.
+</p>
+
+<div class="example-box">
+   <p>
+    <strong>Optimal Scenario:</strong>
+    Given <em>Day1</em> <span style="color:red;"><strong>(20150801)</strong></span> and 
+    <em>Day2</em> <span style="color:red;"><strong>(20150802)</strong></span>, 
+    anomalous melting is detected between two consecutive or continuous days.
+    </p>
+
+    <p>
+    <strong>Alternative or Hypothetical Scenario:</strong>
+    Given <em>Day1</em> <span style="color:blue;"><strong>(20150801)</strong></span> and 
+    <em>Day2</em> <span style="color:blue;"><strong>(20150830)</strong></span>, 
+    anomalous melting is detected for a cumulative time period over 30 days.
+</p>
+</div>
+</p>
+    
+
+    <!-- Backend error display -->
+    {% if error %}
+        <div style="color: red; font-weight: bold; margin: 15px 0;">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="/process" method="POST">
+
+    <h3>Baseline Date (<em>Day1</em>)</h3>
+    <input 
+        type="text" 
+        name="date1"
+        pattern="\d{8}"
+        maxlength="8"
+        placeholder="YYYYMMDD (e.g. 20150801)"
+        required
+        style="width:260px; height:40px; font-size:18px; padding:5px;"
+    >
+
+    <h3>Target Date (<em>Day2</em>)</h3>
+    <input 
+        type="text" 
+        name="date2"
+        pattern="\d{8}"
+        maxlength="8"
+        placeholder="YYYYMMDD (e.g. 20150805)"
+        required
+        style="width:260px; height:40px; font-size:18px; padding:5px;"
+    >
+
+    <br><br>
+    <button type="submit" class="submit-btn">
+        Run CMAD Detection
+    </button>
+
+</form>

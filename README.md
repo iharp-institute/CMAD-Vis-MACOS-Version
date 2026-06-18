@@ -1,4 +1,4 @@
-# CMAD — Antarctic Sea Ice Anomaly Detector
+# CMAD-Vis-MACOS-Version
 
 CMAD compares two NOAA/NSIDC Antarctic sea ice concentration images (one
 baseline date, one target date) and highlights statistically anomalous
@@ -73,16 +73,6 @@ Before building, sanity-check your Mac's device support:
 python3 check_device.py
 ```
 
-## Running from source (development)
-
-```bash
-pip install -r requirements.txt
-python3 app.py
-```
-
-Then open `http://localhost:5000`.
-
-
 
 ## Known limitations
 
@@ -100,4 +90,4 @@ National Science Foundation.
 
 *(Add a license of your choice here — e.g. MIT, BSD-3-Clause, or your
 institution's preferred license. None is currently specified.)*
-# CMAD-Vis-MACOS-Version
+

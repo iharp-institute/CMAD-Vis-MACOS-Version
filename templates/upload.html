@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMAD – Antarctic Anomalous Melting Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<div class="container">
+
+    <h1>Convolution Matrix Anomaly Detection (CMAD)</h1>
+    <h2>Antarctic Anomalous Melting Detection Tool</h2>
+
+    <p class="intro">
+        Upload <strong>two daily satellite images</strong> of the 
+        <strong>entire Antarctic region</strong> obtained from 
+        <strong>NOAA satellite data</strong>. <br><br>
+        The CMAD system analyzes changes between these two images and 
+        automatically highlights areas experiencing 
+        <strong>anomalous melting</strong>.
+    </p>
+
+    <p class="instructions">
+        Please ensure that:
+        <ul>
+            <li>Both images cover the <strong>full Antarctic region</strong></li>
+            <li>Images represent <strong>two different dates</strong></li>
+            <li>Day <strong><i>t</i></strong> is the target day</li>
+            <li>Day <strong><i>t-n</i></strong> is any earlier baseline day used for comparison</li>
+        </ul>
+        The system compares Day <i>t</i> with Day <i>t-n</i> to detect unusual melt patterns.
+    </p>
+
+    <form action="/process" method="POST" enctype="multipart/form-data">
+
+        <h3>Upload Time Period 1 (Day <i>t-n</i>)</h3>
+        <p class="desc">
+            Select an earlier satellite image to use as the baseline 
+            for comparison (any previous day before the target day).
+        </p>
+        <input type="file" name="img1" required>
+
+        <h3>Upload Time Period 2 (Day <i>t</i>)</h3>
+        <p class="desc">
+            Select the satellite image for the <strong>target (Day <i>t</i>)</strong>.  
+            CMAD detects anomalous melting by comparing this image with Day <i>t-n</i>.
+        </p>
+        <input type="file" name="img2" required><br><br>
+
+        <button type="submit" class="submit-btn">Run CMAD Detection</button>
+    </form>
+
+</div>
+</body>
+</html>

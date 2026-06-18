@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMAD Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<div class="container">
+
+    <div class="logo-header">
+        <img src="/static/iharp-logo.jpg" alt="iHARP Logo" class="logo-img">
+        <h1>CMAD Anomaly Detection Result</h1>
+        <img src="/static/nsf-logo.png" alt="NSF Logo" class="logo-img logo-nsf">
+    </div>
+
+    <p>
+        Target Date: <strong>{{ target_date }}</strong>
+    </p>
+
+    <img src="/outputs/{{ image_file }}" width="500">
+
+    <br><br>
+
+    <button id="download-btn" class="submit-btn" data-filename="{{ image_file }}">Download Result Image</button>
+
+    <script>
+    document.getElementById('download-btn').addEventListener('click', function () {
+        const filename = this.getAttribute('data-filename');
+
+        if (window.pywebview && window.pywebview.api) {
+            // Packaged desktop app — open a native macOS Save As dialog
+            window.pywebview.api.save_file(filename).then(function (result) {
+                if (result && result.status === 'error') {
+                    alert('Could not save file: ' + result.message);
+                }
+                // 'ok' and 'cancelled' need no further action — the app
+                // keeps running normally either way.
+            });
+        } else {
+            // Plain browser (e.g. dev server, no pywebview present) —
+            // fall back to the original Flask download route.
+            window.location.href = '/download/' + filename;
+        }
+    });
+    </script>
+
+    <br><br>
+
+    <!-- Pass run_id so home page can clean up this output if not downloaded -->
+    <a href="/?cleanup={{ run_id }}">Run Another Detection</a>
+
+</div>
+</body>
+</html>
