@@ -1,4 +1,4 @@
-# CMAD — macOS Version
+# CMAD-Vis — macOS Version
 
 CMAD compares two NOAA/NSIDC Antarctic sea ice concentration images (one
 baseline date, one target date) and highlights statistically anomalous
